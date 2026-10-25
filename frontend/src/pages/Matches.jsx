@@ -16,7 +16,7 @@ export default function Matches() {
   const [yearFilter, setYearFilter] = useState('ALL');
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/matches')
+    axios.get('/api/matches')
       .then(res => {
         // Exclude Test matches from white-ball telemetry
         const limitedOversOnly = res.data.filter(

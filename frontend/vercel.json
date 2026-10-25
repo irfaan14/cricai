@@ -2,10 +2,14 @@
   "rewrites": [
     {
       "source": "/analytics/(.*)",
-      "destination": "https://https://cricai-backend-dkru.onrender.com/analytics/$1"
+      "destination": "https://YOUR-RENDER-BACKEND.onrender.com/analytics/$1"
     },
     {
-      "source": "/((?!assets/|.*\\\\..*).*)",
+      "source": "/api/(.*)",
+      "destination": "https://YOUR-RENDER-BACKEND.onrender.com/api/$1"
+    },
+    {
+      "source": "/((?!assets/|.*\\..*).*)",
       "destination": "/index.html"
     }
   ]
