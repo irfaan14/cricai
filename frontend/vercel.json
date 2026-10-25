@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/analytics/(.*)",
+      "destination": "https://https://cricai-backend-dkru.onrender.com/analytics/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
