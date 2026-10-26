@@ -16,17 +16,31 @@ export default function Matches() {
   const [yearFilter, setYearFilter] = useState('ALL');
 
   useEffect(() => {
-    axios.get('/api/matches')
+    // If running in local Vite dev mode, call port 8080 directly; otherwise use the deployed Render Java backend
+    const apiUrl = window.location.hostname === 'localhost'
+      ? 'http://localhost:8080/api/matches'
+      : 'https://cricai-java-backend.onrender.com/api/matches';
+
+    axios.get(apiUrl)
       .then(res => {
+        // Robust extraction: support raw array, Spring Data Page (res.data.content), or wrapped data
+        const rawList = Array.isArray(res.data)
+          ? res.data
+          : Array.isArray(res.data?.content)
+            ? res.data.content
+            : Array.isArray(res.data?.data)
+              ? res.data.data
+              : [];
+
         // Exclude Test matches from white-ball telemetry
-        const limitedOversOnly = res.data.filter(
+        const limitedOversOnly = rawList.filter(
           m => m.matchType && !m.matchType.toLowerCase().includes('test') && m.matchType !== 'MDM'
         );
         setMatches(limitedOversOnly);
         setLoading(false);
       })
       .catch(err => {
-        console.error(err);
+        console.error("Failed to load match telemetry:", err);
         setLoading(false);
       });
   }, []);
