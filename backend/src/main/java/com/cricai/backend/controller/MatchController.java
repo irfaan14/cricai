@@ -19,10 +19,10 @@ public class MatchController {
         this.matchService = matchService;
     }
 
-    // Fast list endpoint: returns match cards without deliveries
+    // Fast list endpoint: returns top 50 match cards without heavy deliveries
     @GetMapping
     public List<MatchSummaryDto> getAllMatches() {
-        return matchService.getAllMatchSummaries();
+        return matchService.getTop50MatchSummaries();
     }
 
     // Detail endpoint: returns full match with all ball-by-ball deliveries
