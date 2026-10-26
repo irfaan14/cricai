@@ -35,7 +35,7 @@ export default function Simulator() {
     setError(null);
     setWhatIfResult(null);
 
-    axios.post('http://localhost:8000/analytics/sandbox-baseline', {
+    axios.post('https://cricai-ora0.onrender.com/analytics/sandbox-baseline', {
       format,
       division,
       chasing_team: chasingTeam,
@@ -63,7 +63,7 @@ export default function Simulator() {
     setWhatIfLoading(true);
     setError(null);
 
-    axios.post('http://localhost:8000/analytics/sandbox-whatif', {
+    axios.post('https://cricai-ora0.onrender.com/analytics/sandbox-whatif', {
       baseline: {
         format,
         division,

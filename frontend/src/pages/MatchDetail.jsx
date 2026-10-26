@@ -40,7 +40,7 @@ export default function MatchDetail() {
     setSimLoading(true);
     setSimError(null);
 
-    axios.post('http://localhost:8000/analytics/simulate-scenario', {
+    axios.post('https://cricai-ora0.onrender.com/analytics/simulate-scenario', {
       match_id: id,
       user_prompt: text.trim(),
       current_over: 16.0

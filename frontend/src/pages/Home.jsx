@@ -23,7 +23,7 @@ export default function Home() {
     if (!text.trim()) return;
 
     setLoading(true);
-    axios.post('http://localhost:8000/analytics/simulate-scenario', {
+    axios.post('https://cricai-ora0.onrender.com/analytics/simulate-scenario', {
       user_prompt: text.trim()
     })
       .then(res => {

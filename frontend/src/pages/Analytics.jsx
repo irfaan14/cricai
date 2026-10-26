@@ -68,7 +68,7 @@ export default function Analytics() {
     setStatsLoading(true);
     setRagResponse(null);
 
-    axios.post('http://localhost:8000/analytics/player-stats', {
+    axios.post('https://cricai-ora0.onrender.com/analytics/player-stats', {
       player_a: playerA,
       player_b: playerB,
       wing: targetWing
@@ -187,7 +187,7 @@ export default function Analytics() {
     if (!text.trim()) return;
 
     setRagLoading(true);
-    axios.post('http://localhost:8000/analytics/simulate-scenario', {
+    axios.post('https://cricai-ora0.onrender.com/analytics/simulate-scenario', {
       user_prompt: `[Multi-Format Player Radar] Comparing ${playerA} vs ${playerB} across T20, ODI, and Test. Wing: ${activeWing}. Analytical question: ${text}`
     })
       .then(res => {
